@@ -43,7 +43,7 @@ function UploadItem({ onItemUploaded, user }) {
     setMessage('');
 
     try {
-      const response = await axios.post('/api/items/lost', {
+      await axios.post('/api/items/lost', {
         userId: user.id,
         name: user.name,
         email: user.email,
