@@ -63,16 +63,31 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <div className="header-content">
-          <h1>Lost & Found</h1>
-          <p className="subtitle">Find or Report Your Lost Items</p>
-        </div>
-        <div className="header-actions">
-          {currentView !== 'dashboard' && (
-            <button className="back-to-home-btn" onClick={handleBackToDashboard}>
-              ← Back to Dashboard
+        <div className="nav-left">
+          <div className="brand-mark">Lost & Found</div>
+          <div className="header-nav">
+            <button
+              className={`nav-link ${currentView === 'dashboard' ? 'active' : ''}`}
+              onClick={handleBackToDashboard}
+            >
+              Dashboard
             </button>
-          )}
+            <button
+              className={`nav-link ${currentView === 'upload' ? 'active' : ''}`}
+              onClick={handleViewUpload}
+            >
+              Report Item
+            </button>
+            <button
+              className={`nav-link ${currentView === 'claim' ? 'active' : ''}`}
+              onClick={handleViewClaim}
+            >
+              Browse Items
+            </button>
+          </div>
+        </div>
+
+        <div className="header-actions">
           <div className="user-info">
             <span className="user-name">{user.name}</span>
             <button className="logout-btn" onClick={handleLogout}>Logout</button>

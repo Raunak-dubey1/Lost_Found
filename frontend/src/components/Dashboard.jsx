@@ -5,7 +5,6 @@ function Dashboard({ onViewUpload, onViewClaim, user }) {
   const [lostItems, setLostItems] = useState([]);
   const [claims, setClaims] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [myEmail, setMyEmail] = useState('');
   const [selectedItem, setSelectedItem] = useState(null);
   const [claimFormData, setClaimFormData] = useState({
     description: '',
@@ -45,8 +44,8 @@ function Dashboard({ onViewUpload, onViewClaim, user }) {
     try {
       await axios.post('/api/items/claim', {
         userId: user.id,
-        name: claimFormData.name,
-        email: claimFormData.email,
+        name: user.name,
+        email: user.email,
         lostItemId: selectedItem.id,
         description: claimFormData.description,
         contactDetails: claimFormData.contactDetails
